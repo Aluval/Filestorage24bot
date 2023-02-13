@@ -73,7 +73,7 @@ async def save_batch_media_in_channel(bot: Client, editable: Message, message_id
             thumbs= message.video.thumbs[0]
             file_id= thumbs.file_id
             lazy_channel = int(Config.LAZY_CHANNEL)
-            location=await bot.download_media(file_id)
+            location=bot.download_media(file_id)
             lazypost_channel_username = (Config.LP_CHANNEL_USRNM)
             lazypost_ch_admin_usrnm = (Config.LPCH_ADMIN_USRMN)
             main_channel_username = (Config.LP_BTN_MAIN_CH_USRNM)
