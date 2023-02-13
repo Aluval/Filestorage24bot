@@ -20,8 +20,11 @@ class Config(object):
 	LP_BTN_MAIN_CH_USRNM = os.environ.get("LP_BTN_MAIN_CH_USRNM")
 	LP_CHANNEL_USRNM = os.environ.get("LP_CHANNEL_USRNM")
 	LPCH_ADMIN_USRMN = os.environ.get("LPCH_ADMIN_USRMN")
+  # LP_CUSTOM_TEMPLATE= os.environ.get("LP_CUSTOM_TEMPLATE","example \n\n Please Upadate this template acording to you @LazyDeveloperr ")
+  # i have removed {file_name} from custom template    
 	LP_CUSTOM_TEMPLATE= os.environ.get("LP_CUSTOM_TEMPLATE")
-  # LP_CUSTOM_TEMPLATE= os.environ.get("LP_CUSTOM_TEMPLATE","{file_name} - example \n\n Please Upadate this template acording to you @LazyDeveloperr ")
+  # LP_CUSTOM_TEMPLATE= os.environ.get("LP_CUSTOM_TEMPLATE","example \n\n Please Upadate this template acording to you @LazyDeveloperr ")
+  # i have removed {file_name} from custom template    
 	BANNED_CHAT_IDS = list(set(int(x) for x in os.environ.get("BANNED_CHAT_IDS", "-1001362659779 -1001255795497").split()))
 	OTHER_USERS_CAN_SAVE_FILE = bool(os.environ.get("OTHER_USERS_CAN_SAVE_FILE", True))
 	ABOUT_BOT_TEXT = f"""

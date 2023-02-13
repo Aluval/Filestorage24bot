@@ -97,10 +97,22 @@ async def save_batch_media_in_channel(bot: Client, editable: Message, message_id
                 ]
             )
             # ✧ Here is the condition for sending POST in movie channel
-            if(Config.LP_CUSTOM_TEMPLATE):
-                await bot.send_photo(lazy_channel,photo=location,caption=lazypost_custom_template,reply_markup=reply_markup)
-            elif(Config.LP_CUSTOM_TEMPLATE and Config.LP_BTN_MAIN_CH_USRNM):
-                await bot.send_photo(lazy_channel,photo=location,caption=lazypost_custom_template,reply_markup=main_btn)
+            if(Config.LP_CUSTOM_TEMPLATE and Config.LP_BTN_MAIN_CH_USRNM):
+                if thumbs is None :
+                    await message.reply_text(text=f"no thumbnail")
+                elif location is None:
+                    await message.reply_text(text=f"no location")
+                else :
+                    await message.reply_text(text=f"file id in none")
+                await bot.send_message(lazy_channel,caption=lazypost_custom_template,reply_markup=main_btn)
+            elif(Config.LP_CUSTOM_TEMPLATE):
+                if thumbs is None :
+                    await message.reply_text(text=f"no thumbnail in only ct")
+                elif location is None:
+                    await message.reply_text(text=f"no location in only ct")
+                else :
+                    await message.reply_text(text=f"file id in none in only ct")
+                await bot.send_message(lazy_channel,caption=lazypost_custom_template,reply_markup=main_btn)
             elif(Config.LP_CHANNEL_USRNM and Config.LPCH_ADMIN_USRMN and Config.LP_BTN_MAIN_CH_USRNM):
                 await bot.send_photo(lazy_channel,photo=location,caption=caption_z,reply_markup=main_btn)
             elif(Config.LP_CHANNEL_USRNM and Config.LPCH_ADMIN_USRMN):
@@ -171,7 +183,7 @@ async def save_media_in_channel(bot: Client, editable: Message, message: Message
             caption_zab = f"{file_name}\n\n🦋・‥☆𝘼𝘿𝙈𝙞𝙉 𝙨𝙪𝙥𝙥𝙤𝙧𝙩☆‥・🦋\n╰┈➤・☆ @{lazypost_ch_admin_usrnm} \n\n+> ᴛʜᴀɴᴋ ʏᴏᴜ <a href='https://telegram.me/LazyDeveloper'>⎝⎝✧ʟᴀᴢʏᴅᴇᴠᴇʟᴏᴘᴇʀ✧⎠⎠</a>"
             caption_zabi = f"{file_name}\n\n+> ᴛʜᴀɴᴋ ʏᴏᴜ <a href='https://telegram.me/LazyDeveloper'>⎝⎝✧ʟᴀᴢʏᴅᴇᴠᴇʟᴏᴘᴇʀ✧⎠⎠</a>"
             lazy_dev = f"+> ᴛʜᴀɴᴋ ʏᴏᴜ <a href='https://telegram.me/LazyDeveloper'>⎝⎝✧ʟᴀᴢʏᴅᴇᴠᴇʟᴏᴘᴇʀ✧⎠⎠</a>"
-            lazypost_custom_template = f"{(Config.LP_CUSTOM_TEMPLATE)}\n\n{lazy_dev} ♥️"
+            lazypost_custom_template = f"{file_name}\n\n{(Config.LP_CUSTOM_TEMPLATE)}\n\n{lazy_dev} ♥️"
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton("⎝⎝✧ ᴅᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ ✧⎠⎠", url=share_link)],
                  [InlineKeyboardButton("ミ★ GΞΓ FILΞ ★彡", url=share_link)],
@@ -184,14 +196,10 @@ async def save_media_in_channel(bot: Client, editable: Message, message: Message
                 ]
             )
             # ✧ Here is the condition for sending POST in movie channel ✧ LazyDeveloper ✧
-            if(Config.LP_CUSTOM_TEMPLATE):
-                if(not location):
-                    await message.reply_text(text=f"❤️‍🩹 it seems you have sent document in Lazy_Mode! which do not contains any **Thumbnail**.\n\nDon't worry baby!\n\nI have added your post in Movie Channel **without Thumbnail**.")
-                    await bot.send_message(lazy_channel,caption=lazypost_custom_template,reply_markup=reply_markup)
-                else:
-                    await bot.send_photo(lazy_channel,photo=location,caption=lazypost_custom_template,reply_markup=reply_markup)
-            elif(Config.LP_CUSTOM_TEMPLATE and Config.LP_BTN_MAIN_CH_USRNM):
+            if(Config.LP_CUSTOM_TEMPLATE and Config.LP_BTN_MAIN_CH_USRNM):
                 await bot.send_photo(lazy_channel,photo=location,caption=lazypost_custom_template,reply_markup=main_btn)
+            elif(Config.LP_CUSTOM_TEMPLATE):
+                await bot.send_photo(lazy_channel,photo=location,caption=lazypost_custom_template,reply_markup=reply_markup)
             elif(Config.LP_CHANNEL_USRNM and Config.LPCH_ADMIN_USRMN and Config.LP_BTN_MAIN_CH_USRNM):
                 await bot.send_photo(lazy_channel,photo=location,caption=caption_z,reply_markup=main_btn)
             elif(Config.LP_CHANNEL_USRNM and Config.LPCH_ADMIN_USRMN):
